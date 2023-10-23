@@ -23,8 +23,8 @@ export default function PaymentItem({ onCloseButton, items = [] }: any) {
 
 
     const { setAdded, cartItems, setCartItems, setRotate,} = useAppContext()
-    const telephone = useInput('', { isEmpty: false, minLength: 11, maxLength: 11, isNumber: false})
-    const sum = useInput('', { isEmpty: false, minValue: 1, maxValue: 1000, isNumber: false })
+    const telephone = useInput('', { isEmpty: true, minLength: 11, maxLength: 11, isNumber: true})
+    const sum = useInput('', { isEmpty: true, minValue: 1, maxValue: 1000, isNumber: true })
     const cardnumber = useInput('', { isEmpty: true, minlength: 19, maxLength: 19, isNumber: true })
     const cardnumberExpiringDateMM = useInput('', { isEmpty: true, minlength: 2, maxLength: 2, isNumber: true })
     const cardnumberExpiringDateYY = useInput('', { isEmpty: true, minlength: 2, maxLength: 2, isNumber: true })

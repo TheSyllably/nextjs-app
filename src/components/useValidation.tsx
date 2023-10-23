@@ -36,7 +36,7 @@ const useValidation = (value:any, validations:any) => {
                 break;
                
             case 'maxValue':
-                value > validations[validation] ? setMaxValueError(false) : setMaxValueError(false) 
+                value > validations[validation] ? setMaxValueError(true) : setMaxValueError(false) 
                 break;
                 
             case 'isNumber':

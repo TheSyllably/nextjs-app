@@ -13,7 +13,7 @@ const useValidation = (value:any, validations:any) => {
     const [minValueError, setMinValueError] = useState(false);
     const [maxValueError, setMaxValueError] = useState(false);
     const [isNumberError, setIsNumberError] = useState(false);
-    const { inputValid, setInputValid} = useGlobalContext();
+    const [inputValid, setInputValid] = useState(false);
    
 
     useEffect(() => {

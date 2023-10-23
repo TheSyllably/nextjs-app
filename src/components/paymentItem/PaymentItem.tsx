@@ -20,7 +20,7 @@ import axios from "axios";
 export default function PaymentItem({ onCloseButton, items = [] }: any) {
 
 
-    const { setAdded, cartItems, setCartItems, setRotate, inputValid } = useGlobalContext()
+    const { setAdded, cartItems, setCartItems, setRotate} = useGlobalContext()
     const telephone = useInput('', { isEmpty: true, minLength: 11, maxLength: 11, isNumber: true})
     const sum = useInput('', { isEmpty: true, minValue: 1, maxValue: 1000, isNumber: true })
     const cardnumber = useInput('', { isEmpty: true, minlength: 19, maxLength: 19, isNumber: true })
@@ -125,9 +125,10 @@ export default function PaymentItem({ onCloseButton, items = [] }: any) {
                         <label> Cумма
                            
                             <input onChange={e => sum.onChange(e)} onBlur={e => sum.onBlur(e)} value={sum.value} className={styles.input} type='text' placeholder='1 руб - 1000 руб' />
+                            {(sum.isBad && sum.isEmpty) && <div style={{ color: 'red' }}> Поле не может быть пустым </div>}
                             {(sum.isBad && sum.minValueError) && <div style={{ color: 'red' }}> Мин. 1 руб. - макс. 1000 руб</div>}
                             {(sum.isBad && sum.maxValueError) && <div style={{ color: 'red' }}> Мин. 1 руб. - макс. 1000 руб</div>}
-                            {(sum.isBad && sum.isEmpty) && <div style={{ color: 'red' }}> Поле не может быть пустым </div>}
+                         
                             {(sum.isBad && sum.isNumberError) && <div style={{ color: 'red' }}> Номер должен состоять из цифр! </div>}
                           
                         </label>
@@ -164,7 +165,7 @@ export default function PaymentItem({ onCloseButton, items = [] }: any) {
 
                                     </div>
                                     <div className={styles.cvc__data}>
-                                        <input value={cardDataCVC.value} onChange={e => cardDataCVC.onChange(e)} onBlur={e => cardDataCVC.onBlur(e)} className={styles.card__cvc} type='number' placeholder='CVC' />
+                                        <input maxLength={3} value={cardDataCVC.value} onChange={e => cardDataCVC.onChange(e)} onBlur={e => cardDataCVC.onBlur(e)} className={styles.card__cvc} type='number' placeholder='CVC' />
                                         {(cardDataCVC.isBad && cardDataCVC.isEmpty) && <div style={{ color: 'red' }}> Поле не может быть пустым </div>}
                                         {(cardDataCVC.isBad && cardDataCVC.minLengthError) && <div style={{ color: 'red' }}> Поле должно содержать 3 цифры</div>}
                                         {(cardDataCVC.isBad && cardDataCVC.maxLengthError) && <div style={{ color: 'red' }}> Поле должно содержать 3 цифры</div>}
@@ -180,7 +181,7 @@ export default function PaymentItem({ onCloseButton, items = [] }: any) {
 
 
 
-
+                  
                     <div className={styles.payment__button}>
                         <button  className={styles.green__button}
                          disabled={!telephone.inputValid && !sum.inputValid}

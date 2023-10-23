@@ -15,7 +15,7 @@ export const GlobalContextProvider = ({children}) => {
   const [items, setItems] = useState([]);
   const [cartItems, setCartItems] = useState<any>([]);
   const [rotate, setRotate] = useState(false); 
-  const [inputValid, setInputValid] = useState(false);
+  
 
 
   const onAddToCart = (obj: any) => {
@@ -27,7 +27,7 @@ export const GlobalContextProvider = ({children}) => {
 
 
     return(
-        <GlobalContext.Provider value={{ isOpen, setOpen, items, setItems, cartItems, setCartItems, isAdded, setAdded, onAddToCart, rotate, setRotate, inputValid, setInputValid}}>
+        <GlobalContext.Provider value={{ isOpen, setOpen, items, setItems, cartItems, setCartItems, isAdded, setAdded, onAddToCart, rotate, setRotate}}>
             {children} </GlobalContext.Provider>
     )
 }

@@ -19,21 +19,21 @@ export default function Home() {
     id: 1,
     name: 'Билайн(Россия)',
     logo: 'https://kartinkin.net/uploads/posts/2022-03/1646301873_43-kartinkin-net-p-bilain-kartinki-47.jpg',
-    description: 'Прямое пополнение мобильных телефонов Теле2 (Россия).',
+    description: 'Оплата услуг сотовой связи'
    
   },
   {
     id: 2,
     name: 'МТС',
     logo: 'https://papik.pro/grafic/uploads/posts/2023-04/1681489805_papik-pro-p-logotip-mts-vektor-30.jpg',
-    description: 'Оплата услуг сотовой связи',
+    description: 'Оплата услуг сотовой связи'
    
   },
   {
     id: 3,
     name: 'Мегафон(Россия)',
     logo: 'https://i6.photo.2gis.com/images/branch/0/30258560055683499_c4d5.jpg',
-    description: 'Оплата услуг сотовой связи',
+    description: 'Оплата услуг сотовой связи'
    
   }
 

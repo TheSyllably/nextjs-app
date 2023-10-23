@@ -132,6 +132,7 @@
 }
 
 .card__number {
+    padding-left: 10px;
     position: relative;
     margin: 0 auto;
     width: 300px;
@@ -210,12 +211,14 @@
 }
 
 .card__expiringDateYY {
+    padding-left: 10px;
     display: flex;
     flex-direction: column;
     max-width: 58px;
 }
 
 .cvc__data {
+    padding-left: 10px;
     display: flex;
     flex-direction: column;
     max-width: 58px;

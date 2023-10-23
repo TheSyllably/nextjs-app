@@ -17,7 +17,7 @@ export default function NavMenu(props: { onClose: React.MouseEventHandler<HTMLBu
     id: 4,
     name: 'Теле2',
     logo: 'https://static.tildacdn.com/tild6236-6534-4239-a262-346433393761/maxresdefault.jpg',
-    description: 'Прямое пополнение мобильных телефонов Теле2 (Россия).',
+    description: 'Оплата услуг сотовой связи',
     
   },
   {

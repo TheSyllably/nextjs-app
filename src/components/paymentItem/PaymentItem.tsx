@@ -20,6 +20,8 @@ import axios from "axios";
 export default function PaymentItem({ onCloseButton, items = [] }: any) {
 
 
+
+
     const { setAdded, cartItems, setCartItems, setRotate} = useGlobalContext()
     const telephone = useInput('', { isEmpty: true, minLength: 11, maxLength: 11, isNumber: true})
     const sum = useInput('', { isEmpty: true, minValue: 1, maxValue: 1000, isNumber: true })
@@ -28,13 +30,13 @@ export default function PaymentItem({ onCloseButton, items = [] }: any) {
     const cardnumberExpiringDateYY = useInput('', { isEmpty: true, minlength: 2, maxLength: 2, isNumber: true })
     const cardDataCVC = useInput('', { isEmpty: true, minlength: 3, maxLength: 3 , isNumber: true})
     
+    
 
 
 
     const [isOrderComplete, setIsOrderComplete] = useState(false);
     const [isOpen, setOpen] = useState(false)
     const [orderId, setOrderId] = useState(null)
-    const [isLoading, setIsLoading] = useState(false)
 
 
 
@@ -51,7 +53,6 @@ export default function PaymentItem({ onCloseButton, items = [] }: any) {
 
         alert(urlList[random])
         try {
-            setIsLoading(true);
             const { data } = await axios.post(urlList[random], { items: cartItems });
             setOrderId(data.id)
             setIsOrderComplete(true);
@@ -60,7 +61,7 @@ export default function PaymentItem({ onCloseButton, items = [] }: any) {
             console.log('Не удалось создать заказ')
         }
         setOpen(true)
-        setIsLoading(false)
+    
 
     }
 
@@ -128,7 +129,6 @@ export default function PaymentItem({ onCloseButton, items = [] }: any) {
                             {(sum.isBad && sum.isEmpty) && <div style={{ color: 'red' }}> Поле не может быть пустым </div>}
                             {(sum.isBad && sum.minValueError) && <div style={{ color: 'red' }}> Мин. 1 руб. - макс. 1000 руб</div>}
                             {(sum.isBad && sum.maxValueError) && <div style={{ color: 'red' }}> Мин. 1 руб. - макс. 1000 руб</div>}
-                         
                             {(sum.isBad && sum.isNumberError) && <div style={{ color: 'red' }}> Номер должен состоять из цифр! </div>}
                           
                         </label>
@@ -183,9 +183,7 @@ export default function PaymentItem({ onCloseButton, items = [] }: any) {
 
                   
                     <div className={styles.payment__button}>
-                        <button  className={styles.green__button}
-                         disabled={!telephone.inputValid && !sum.inputValid}
-                         onClick={onClickOrder}>
+                        <button  disabled={!telephone.inputValid&&!sum.inputValid} className={styles.green__button} onClick={onClickOrder}>
                             <span className=''> Оплатить </span>
                         </button>
                     </div>

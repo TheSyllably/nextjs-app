@@ -1,95 +1,98 @@
-import Image from 'next/image'
+"use client"
+import NavMenu from '@/components/navList/NavMenu';
+import OperatorItem from '@/components/operatorItem/OperatorItem';
+import PaymentItem from '@/components/paymentItem/PaymentItem';
+import React, { useEffect, useState } from 'react'
+import { useGlobalContext } from './Context/store';
 import styles from './page.module.css'
 
+
+
+
 export default function Home() {
+
+ 
+  const {isOpen, setOpen, cartItems, setCartItems, isAdded, setAdded, onAddToCart, rotate} = useGlobalContext()
+
+
+  const operators = [{
+    id: 1,
+    name: 'Билайн(Россия)',
+    logo: 'https://kartinkin.net/uploads/posts/2022-03/1646301873_43-kartinkin-net-p-bilain-kartinki-47.jpg',
+    description: 'Прямое пополнение мобильных телефонов Теле2 (Россия).',
+   
+  },
+  {
+    id: 2,
+    name: 'МТС',
+    logo: 'https://papik.pro/grafic/uploads/posts/2023-04/1681489805_papik-pro-p-logotip-mts-vektor-30.jpg',
+    description: 'Оплата услуг сотовой связи',
+   
+  },
+  {
+    id: 3,
+    name: 'Мегафон(Россия)',
+    logo: 'https://i6.photo.2gis.com/images/branch/0/30258560055683499_c4d5.jpg',
+    description: 'Оплата услуг сотовой связи',
+   
+  }
+
+]
+
+
+  useEffect(() => {
+    document.body.style.overflow = 'auto'
+}, [])
+  
+
+
+console.log(cartItems)
+
+
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
+  
+    <>
+    
+    {isAdded && <PaymentItem items={cartItems} onCloseButton={() => setAdded(false)}/>}
+      <div className={styles.wrapper}>
+
+       
+        <h1 className={styles.wrapper__text}> Оплата мобильной связи</h1>
+
+        
+        <hr className={styles.wrapper__hr}/>
+        
+        <p className={styles.wrapper__p}> Выберите Вашего оператора связи</p>
+
+      
         <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+          
+
+         
+
+          {operators.map((post: any) => (
+
+            <OperatorItem
+              key={post.id}
+              name={post.name}
+              logo={post.logo}
+              description={post.description}
+              onCloseButton={() => setAdded(!isAdded)}
+              onPlus={(obj:any) => onAddToCart(obj)}
+            />))}
         </div>
+    
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <div className={styles.add__item}>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+<button onClick={() => setOpen(!isOpen)} className={styles.add__button}> + </button>
+</div>
+{isOpen ? <NavMenu onClose={() => setOpen(false)} /> : null}
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+    
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </>
   )
 }

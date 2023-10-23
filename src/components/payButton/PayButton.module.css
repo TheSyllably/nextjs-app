@@ -1,0 +1,14 @@
+.pay__btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #3f228d;
+    border-radius: 4px;
+    width: 300px;
+    height: 36px;
+    color: white;
+    border: none;
+    margin-left: 35px;
+    padding-left: 10px;
+
+}

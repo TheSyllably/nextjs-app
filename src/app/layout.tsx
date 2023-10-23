@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { GlobalContextProvider } from './Context/store'
+import { AppContextProvider } from './Context/store'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,9 +22,9 @@ export default function RootLayout({
     <html lang="en">
       
       <body>
-        <GlobalContextProvider>
+        <AppContextProvider>
         {children}
-        </GlobalContextProvider>
+        </AppContextProvider>
         </body>
         
     </html>

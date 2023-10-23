@@ -3,7 +3,7 @@ import NavMenu from '@/components/navList/NavMenu';
 import OperatorItem from '@/components/operatorItem/OperatorItem';
 import PaymentItem from '@/components/paymentItem/PaymentItem';
 import React, { useEffect, useState } from 'react'
-import { useGlobalContext } from './Context/store';
+import { useAppContext } from './Context/store';
 import styles from './page.module.css'
 
 
@@ -12,7 +12,7 @@ import styles from './page.module.css'
 export default function Home() {
 
  
-  const {isOpen, setOpen, cartItems, setCartItems, isAdded, setAdded, onAddToCart, rotate} = useGlobalContext()
+  const {isOpen, setOpen, cartItems, isAdded, setAdded, onAddToCart} = useAppContext()
 
 
   const operators = [{

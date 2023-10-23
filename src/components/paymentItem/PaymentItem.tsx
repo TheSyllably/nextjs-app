@@ -6,7 +6,7 @@ import styles from './PaymentItem.module.css'
 
 
 import useInput from "@/components/useInput";
-import { useGlobalContext } from "@/app/Context/store"
+import { useAppContext} from "@/app/Context/store"
 import Info from "../Info/successPayment";
 import axios from "axios";
 
@@ -22,9 +22,9 @@ export default function PaymentItem({ onCloseButton, items = [] }: any) {
 
 
 
-    const { setAdded, cartItems, setCartItems, setRotate} = useGlobalContext()
-    const telephone = useInput('', { isEmpty: true, minLength: 11, maxLength: 11, isNumber: true})
-    const sum = useInput('', { isEmpty: true, minValue: 1, maxValue: 1000, isNumber: true })
+    const { setAdded, cartItems, setCartItems, setRotate,} = useAppContext()
+    const telephone = useInput('', { isEmpty: false, minLength: 11, maxLength: 11, isNumber: false})
+    const sum = useInput('', { isEmpty: false, minValue: 1, maxValue: 1000, isNumber: false })
     const cardnumber = useInput('', { isEmpty: true, minlength: 19, maxLength: 19, isNumber: true })
     const cardnumberExpiringDateMM = useInput('', { isEmpty: true, minlength: 2, maxLength: 2, isNumber: true })
     const cardnumberExpiringDateYY = useInput('', { isEmpty: true, minlength: 2, maxLength: 2, isNumber: true })
@@ -183,7 +183,7 @@ export default function PaymentItem({ onCloseButton, items = [] }: any) {
 
                   
                     <div className={styles.payment__button}>
-                        <button  disabled={!telephone.inputValid&&!sum.inputValid} className={styles.green__button} onClick={onClickOrder}>
+                        <button disabled={!telephone.inputValid || !sum.inputValid} className={styles.green__button} onClick={onClickOrder}>
                             <span className=''> Оплатить </span>
                         </button>
                     </div>

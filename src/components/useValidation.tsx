@@ -1,5 +1,5 @@
 "use client"
-import { useGlobalContext } from "@/app/Context/store"
+import { useAppContext } from "@/app/Context/store"
 import React, {useEffect, useState} from "react";
 
 
@@ -15,13 +15,7 @@ const useValidation = (value:any, validations:any) => {
     const [isNumberError, setIsNumberError] = useState(false);
     const [inputValid, setInputValid] = useState(false);
    
-    useEffect(() => {
-        if( isEmpty || maxLengthError || minLengthError || minValueError || maxValueError || isNumberError ) {
-         setInputValid(false)
-      } else { setInputValid(true) }
- 
-     }, [isEmpty, maxLengthError, minLengthError, minValueError, maxValueError, isNumberError])
- 
+  
 
     useEffect(() => {
     for (const validation in validations) {
@@ -34,7 +28,7 @@ const useValidation = (value:any, validations:any) => {
             break;
 
             case 'isEmpty':
-                 value ? setEmpty(true) : setEmpty(false)
+                 value ? setEmpty(false) : setEmpty(true)
             break;
 
             case 'minValue':
@@ -42,7 +36,7 @@ const useValidation = (value:any, validations:any) => {
                 break;
                
             case 'maxValue':
-                value > validations[validation] ? setMaxValueError(true) : setMaxValueError(false) 
+                value > validations[validation] ? setMaxValueError(false) : setMaxValueError(false) 
                 break;
                 
             case 'isNumber':
@@ -53,6 +47,14 @@ const useValidation = (value:any, validations:any) => {
     }
     }, [value])
 
+
+    useEffect(() => {
+        if( isEmpty || maxLengthError || minLengthError || minValueError || maxValueError || isNumberError ) {
+         setInputValid(false)
+      } else { setInputValid(true) }
+ 
+     }, [isEmpty, maxLengthError, minLengthError, minValueError, maxValueError, isNumberError])
+ 
     
     return {
         isEmpty,

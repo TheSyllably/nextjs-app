@@ -1,4 +1,4 @@
-import { useGlobalContext } from '@/app/Context/store';
+import { useAppContext } from '@/app/Context/store';
 
 import React from 'react';
 import OperatorItem from '../operatorItem/OperatorItem';
@@ -10,7 +10,7 @@ export default function NavMenu(props: { onClose: React.MouseEventHandler<HTMLBu
 
 
 
-  const {isAdded, setAdded, onAddToCart} = useGlobalContext()
+  const {isAdded, setAdded, onAddToCart} = useAppContext()
   
 
   const list = [{

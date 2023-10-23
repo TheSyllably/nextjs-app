@@ -1,5 +1,5 @@
 "use client"
-import { useGlobalContext } from "@/app/Context/store"
+import { useAppContext } from "@/app/Context/store"
 import React  from "react"
 import styles from './successPayment.module.css'
 
@@ -11,7 +11,7 @@ const Info = ( {image, title, description}: any ) => {
      
 
 
-   const { setAdded} = useGlobalContext()
+   const { setAdded} = useAppContext()
     return(
         <div className={styles.success__wrapper}>
         <div className={styles.success__block}>

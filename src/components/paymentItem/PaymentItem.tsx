@@ -183,7 +183,7 @@ export default function PaymentItem({ onCloseButton, items = [] }: any) {
 
                   
                     <div className={styles.payment__button}>
-                        <button disabled={!telephone.inputValid || !sum.inputValid} className={styles.green__button} onClick={onClickOrder}>
+                        <button disabled={!telephone.inputValid || !sum.inputValid || !cardDataCVC.inputValid || !cardnumberExpiringDateYY.inputValid || !cardnumberExpiringDateMM.inputValid || !cardnumber.inputValid } className={styles.green__button} onClick={onClickOrder}>
                             <span className=''> Оплатить </span>
                         </button>
                     </div>

@@ -89,6 +89,10 @@ cursor: pointer;
    width: 130px;
    font-size: 24px;
    transition: 0.5s;
+   &:hover {
+    background-color: #0aff00;
+    transform: translateY(5px)
+   }
 `
 
 /*  MAIN     */

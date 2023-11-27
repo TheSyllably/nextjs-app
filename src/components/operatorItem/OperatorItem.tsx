@@ -20,7 +20,8 @@ border-radius: 10px;
 box-shadow: rgba(0, 0, 0, 0.4) 0px 10px 20px;
 transition: 0.4s;
 &:hover {
-  background-color: rgba(189, 189, 189, 0.352);
+  background-color: black;
+  color: white;
   box-shadow: rgba(0, 0, 0, 0.597) 0px 10px 20px;
   transform: translateY(-5%);
   transition: 0.4s;
@@ -47,6 +48,8 @@ const OperatorText = styled.div`
 const OperatorImg = styled.img`
 width: 124px;
 height: 97px;
+margin-left: 20px;
+border-radius: 10px;
 @media(max-width: 1280px) {
     height: 100px;
 }

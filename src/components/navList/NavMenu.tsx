@@ -40,6 +40,10 @@ const CloseButton = styled.button`
 background-color: transparent;
   border: none;
   margin-bottom: 20px;
+  transition: 0.4s;
+  &:hover {
+    color: red;
+  }
 `
 
 /* Main */

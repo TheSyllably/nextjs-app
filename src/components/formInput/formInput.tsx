@@ -8,6 +8,28 @@ flex-direction: column;
 width: 200px;
 `
 
+const InputVal = styled.input`
+padding-left: 10px;
+font-size: 12px;
+color: gray;
+}`
+
+
+const SpanName = styled.span`
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+    display: none;
+
+    ${InputVal}:invalid + & {
+        display: block;
+    }
+
+`
+
+
+
+
 type InputProps = {
 
     label: string;
@@ -30,14 +52,13 @@ const FormInput = (props: InputProps) => {
     return (
         <FormInp className="formInput">
             <label> {label}</label>
-            <input
-                className={styles.inputValidation}
+            <InputVal
                 {...inputProps}
                 onChange={onChange}
                 //    onBlur={handleFocus}
                 //    focused={focused.toString}
                 required />
-            <span className={styles.spanName}> {errorMessage} </span>
+            <SpanName>  {errorMessage} </SpanName>
         </FormInp>
     )
 }

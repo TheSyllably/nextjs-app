@@ -71,6 +71,13 @@ const DeleteButton = styled.button`
 background-color: white;
 border: 1px solid black;
 margin-left: 20px;
+transition: 0.4s;
+&:hover {
+    color: red;
+    border: 1px solid red;
+}
+
+
 `
 
 const PaymentText = styled.h1`

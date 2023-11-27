@@ -25,7 +25,6 @@ height: 200%;
 `
 
 const PaymentWrapper = styled.div`
-overflow-y:auto;
 position: sticky;
 margin: 0 auto;
 padding-top: 10px;
@@ -151,9 +150,14 @@ background-color: #92ff92;
 border: none;
 border-radius: 8px;
 margin-bottom: 10px;
+transition: 0.4s;
 &:disabled {
     background-color:#c2c2c2;
     cursor: default;
+}
+
+&:hover {
+    background-color: #0aff00
 }
 @media(max-width:481px) { 
         width: 338px;
@@ -205,7 +209,7 @@ export default function PaymentItem() {
             id: 1,
             name: 'Номер телефона',
             type: 'text',
-            placeholder: '7-000-000-00-00',
+            placeholder: '70000000000',
             errorMessage: 'Номер должен содержать 11 цифр',
             label: 'phonenumber',
             pattern: "[0-9]{11}",

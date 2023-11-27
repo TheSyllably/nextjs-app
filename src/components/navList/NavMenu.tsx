@@ -13,7 +13,7 @@ transition: 0.3s;
 const MenuList = styled.ul`
 padding: 10px;
 width: 760px;
-border-radius: 5px;
+border-radius: 20px;
 box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
 background-color: rgb(255 255 255);
 margin: 0 auto;
